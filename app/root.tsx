@@ -5,7 +5,10 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useHref,
+  useNavigate,
 } from '@remix-run/react'
+
 import { HeadLinks, ThemeProvider } from 'acore-reactive-cms-theme'
 
 import '@/styles/reset.css'
@@ -43,8 +46,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
+  const navigate = useNavigate()
   return (
-    <ThemeProvider>
+    <ThemeProvider router={{ navigate, useHref }}>
       <Outlet />
     </ThemeProvider>
   )
