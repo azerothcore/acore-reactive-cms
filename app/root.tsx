@@ -1,15 +1,7 @@
-import type { LinksFunction } from '@remix-run/node'
-import {
-  Links,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-  useHref,
-  useNavigate,
-} from '@remix-run/react'
-
+import type { LinksFunction } from 'react-router'
 import { HeadLinks, ThemeProvider } from 'acore-reactive-cms-theme'
+
+import { Links, Meta, Outlet, Scripts, ScrollRestoration, useHref, useNavigate } from 'react-router'
 
 import '@/styles/reset.css'
 
@@ -45,7 +37,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
   )
 }
 
-export default function App() {
+export default function Root() {
   const navigate = useNavigate()
   return (
     <ThemeProvider router={{ navigate, useHref }}>

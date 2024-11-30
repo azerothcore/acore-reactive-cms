@@ -3,3 +3,4 @@ packages/acore-reactive-cms-theme
 .cache
 build
 .env
+.react-router/

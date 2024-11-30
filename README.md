@@ -1,13 +1,7 @@
 # acore-reactive-cms
 A ReactJS CMS for acore-cms and the azerothcore NestJS API
 
-This is being built with [Remix](https://remix.run/).
-
-- 📖 [Remix docs](https://remix.run/docs)
-
-The future flags for remix v3 are already enabled.
-
-- 📖 [Remix future flags](https://remix.run/docs/ru/main/start/future-flags#v3_fetcherpersist)
+This is being built with [React Router 7](https://reactrouter.com/home). Using it as a framework.
 
 ## Development
 

@@ -1,4 +1,4 @@
-import type { MetaFunction } from '@remix-run/node'
+import type { MetaFunction } from 'react-router'
 import { HomeHeader } from 'acore-reactive-cms-theme'
 
 export const meta: MetaFunction = () => {
@@ -8,7 +8,7 @@ export const meta: MetaFunction = () => {
   ]
 }
 
-export default function Index() {
+export default function Home() {
   return (
     <HomeHeader />
   )
