@@ -14,10 +14,11 @@ export default defineConfig({
     viteStaticCopy({
       targets: [
         {
-          src: 'node_modules/acore-reactive-cms-theme/dist/public/*',
+          src: 'node_modules/acore-reactive-cms-theme/lib/public/*',
           dest: '',
         },
       ],
     }),
   ],
+
 })
