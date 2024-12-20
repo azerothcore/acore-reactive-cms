@@ -19,5 +19,5 @@ pnpm run build
 
 Make sure to deploy the output of `pnpm run build`
 
-- `build/server`
-- `build/client`
+- `app/website/build/server`
+- `app/website/build/client`
