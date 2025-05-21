@@ -2,25 +2,16 @@
   "compilerOptions": {
     "target": "ES2022",
     "jsx": "react-jsx",
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ES2022"
-    ],
+    "lib": ["DOM", "DOM.Iterable", "ES2022"],
     "baseUrl": ".",
     "rootDirs": [".", "./.react-router/types"],
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "paths": {
-      "@/*": [
-        "./app/*"
-      ]
+      "@/*": ["./src/*"]
     },
     "resolveJsonModule": true,
-    "types": [
-      "@react-router/node",
-      "vite/client"
-    ],
+    "types": ["@react-router/node", "vite/client"],
     "allowJs": true,
     "strict": true,
     "noEmit": true,

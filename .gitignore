@@ -1,7 +1,5 @@
 node_modules
-packages/acore-reactive-cms-theme
 .cache
 build
 .env
-.react-router/
-.turbo
+.react-router

@@ -1,9 +1,8 @@
 import type { LinksFunction } from 'react-router'
-import { HeadLinks, ThemeProvider } from 'acore-reactive-cms-theme'
-
-import { Links, Meta, Outlet, Scripts, ScrollRestoration, useHref, useNavigate } from 'react-router'
-
+import { Theme } from '@radix-ui/themes'
+import { Links, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router'
 import '@/styles/reset.css'
+import '@radix-ui/themes/styles.css'
 
 export const links: LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -25,7 +24,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
-        <HeadLinks />
         <Links />
       </head>
       <body>
@@ -38,10 +36,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function Root() {
-  const navigate = useNavigate()
   return (
-    <ThemeProvider router={{ navigate, useHref }}>
+    <Theme>
       <Outlet />
-    </ThemeProvider>
+    </Theme>
   )
 }

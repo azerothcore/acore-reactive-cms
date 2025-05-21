@@ -21,17 +21,17 @@ export default function handleRequest(
 ) {
   return isbot(request.headers.get('user-agent') || '')
     ? handleBotRequest(
-      request,
-      responseStatusCode,
-      responseHeaders,
-      reactRouterContext,
-    )
+        request,
+        responseStatusCode,
+        responseHeaders,
+        reactRouterContext,
+      )
     : handleBrowserRequest(
-      request,
-      responseStatusCode,
-      responseHeaders,
-      reactRouterContext,
-    )
+        request,
+        responseStatusCode,
+        responseHeaders,
+        reactRouterContext,
+      )
 }
 
 function handleBotRequest(
