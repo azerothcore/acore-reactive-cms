@@ -37,7 +37,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 export default function Root() {
   return (
-    <Theme>
+    <Theme appearance="dark">
       <Outlet />
     </Theme>
   )

@@ -1,0 +1,28 @@
+.HeroSection__wave-divider {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.HeroSection__wave-divider svg {
+  position: relative;
+  display: block;
+  width: calc(150% + 1.3px);
+  height: 70px;
+}
+
+.HeroSection__wave-divider .shape-fill {
+  --fill-color: var(--color-background);
+  fill: var(--fill-color);
+}
+
+@media (max-width: 767px) {
+  .HeroSection__wave-divider svg {
+    width: calc(150% + 1.3px);
+    height: 40px;
+  }
+}
