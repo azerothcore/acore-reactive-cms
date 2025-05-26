@@ -19,7 +19,7 @@ export const HeroSection: React.FC<HeroSectionProps> = (props) => {
           {children}
         </Container>
       </Section>
-      <WaveDivider />
+      <WaveDivider applyGradient />
     </HeroBanner>
   )
 }

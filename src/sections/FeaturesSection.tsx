@@ -3,7 +3,7 @@ import { Section } from '@/components/Section'
 
 export const FeaturesSection: React.FC = () => {
   return (
-    <Section title="Features">
+    <Section title="Features" id="features" applyGradient>
       <Grid columns="3" gap="4">
         <Card>
           <Heading size="3" as="h2" weight="bold">
@@ -19,6 +19,30 @@ export const FeaturesSection: React.FC = () => {
           </Heading>
           <Text size="2" as="p" mt="2">
             Description of feature 2.
+          </Text>
+        </Card>
+        <Card>
+          <Heading size="3" as="h2" weight="bold">
+            Feature 3
+          </Heading>
+          <Text size="2" as="p" mt="2">
+            Description of feature 3.
+          </Text>
+        </Card>
+        <Card>
+          <Heading size="3" as="h2" weight="bold">
+            Feature 3
+          </Heading>
+          <Text size="2" as="p" mt="2">
+            Description of feature 3.
+          </Text>
+        </Card>
+        <Card>
+          <Heading size="3" as="h2" weight="bold">
+            Feature 3
+          </Heading>
+          <Text size="2" as="p" mt="2">
+            Description of feature 3.
           </Text>
         </Card>
         <Card>

@@ -3,6 +3,7 @@ import heroImage from '@/assets/hero-landing-image.png'
 import { Link } from '@/components/Link'
 import { FeaturesSection } from '@/sections/FeaturesSection'
 import { HeroSection } from '@/sections/HeroSection'
+import { PlaySection } from '@/sections/PlaySection'
 
 function Home() {
   return (
@@ -26,6 +27,7 @@ function Home() {
         </Flex>
       </HeroSection>
       <FeaturesSection />
+      <PlaySection />
     </>
   )
 }
