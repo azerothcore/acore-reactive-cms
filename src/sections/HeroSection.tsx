@@ -11,7 +11,7 @@ export const HeroSection: React.FC<HeroSectionProps> = (props) => {
   const { imgSrc, children } = props
   return (
     <HeroBanner imgSrc={imgSrc}>
-      <Section>
+      <Section pl="4" pr="4">
         <Container
           size="3"
           height={{ initial: '400px', sm: '500px', md: '600px' }}

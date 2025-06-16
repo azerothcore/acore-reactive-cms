@@ -1,7 +1,11 @@
 import type { LinksFunction } from 'react-router'
+import type { Route } from './+types/root'
 import { Theme } from '@radix-ui/themes'
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router'
+import { UserProvider } from '@/contexts/auth/UserProvider'
+import { getUser } from '@/lib/session/session.server'
 import '@/styles/reset.css'
+import '@/styles/gradients.css'
 import '@radix-ui/themes/styles.css'
 
 export const links: LinksFunction = () => [
@@ -35,10 +39,16 @@ export function Layout({ children }: { children: React.ReactNode }) {
   )
 }
 
-export default function Root() {
+export async function loader({ request }: Route.LoaderArgs) {
+  return await getUser(request)
+}
+
+export default function Root({ loaderData }: Route.ComponentProps) {
   return (
-    <Theme appearance="dark">
-      <Outlet />
+    <Theme appearance="dark" className="app-bg--gradient">
+      <UserProvider user={loaderData}>
+        <Outlet />
+      </UserProvider>
     </Theme>
   )
 }

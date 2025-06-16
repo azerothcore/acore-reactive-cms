@@ -4,11 +4,10 @@ import { Nav } from '@/components/Nav'
 
 const navLinks: NavLinkItem[] = [
   { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
-  { href: '/contact', label: 'Contact' },
+  { href: '/contacts', label: 'Contacts' },
 ]
 
-const BaseLayout: React.FC = () => {
+const WithNavLayout: React.FC = () => {
   return (
     <>
       <Nav links={navLinks} />
@@ -19,4 +18,4 @@ const BaseLayout: React.FC = () => {
   )
 }
 
-export default BaseLayout
+export default WithNavLayout

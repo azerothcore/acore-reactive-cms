@@ -29,6 +29,7 @@
     "@react-router/dev": "^7.6.0",
     "@react-router/node": "^7.6.0",
     "@react-router/serve": "^7.6.0",
+    "@types/node": "^22.15.30",
     "@types/react": "^19.1.5",
     "@types/react-dom": "^19.1.5",
     "eslint": "^9.27.0",

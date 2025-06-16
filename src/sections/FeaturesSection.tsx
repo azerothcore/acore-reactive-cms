@@ -3,7 +3,7 @@ import { Section } from '@/components/Section'
 
 export const FeaturesSection: React.FC = () => {
   return (
-    <Section title="Features" id="features" applyGradient>
+    <Section title="Features" id="features">
       <Grid columns="3" gap="4">
         <Card>
           <Heading size="3" as="h2" weight="bold">
