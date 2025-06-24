@@ -1,4 +1,4 @@
-import type { User } from '@/lib/session/session.server'
+import type { AuthenticateResponse } from '@/lib/auth/authenticate'
 import { createContext } from 'react'
 
-export const UserContext = createContext<User | undefined>(undefined)
+export const UserContext = createContext<AuthenticateResponse['login']['user'] | undefined>(undefined)

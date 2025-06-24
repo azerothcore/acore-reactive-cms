@@ -1,15 +1,17 @@
 import { Box, Button, Flex, Text, TextField } from '@radix-ui/themes'
-import { Form } from 'react-router'
+import { useFetcher } from 'react-router'
 
 export const LoginForm: React.FC = () => {
+  const fetcher = useFetcher()
+
   return (
     <Flex asChild direction="column" gap="4">
-      <Form method="post">
+      <fetcher.Form method="post">
         <Box>
-          <Text as="label" htmlFor="email">
-            Email
+          <Text as="label" htmlFor="username">
+            Username
           </Text>
-          <TextField.Root placeholder="Enter your email" id="email" name="email" />
+          <TextField.Root placeholder="Enter your username" id="username" name="username" />
         </Box>
         <Box>
           <Text as="label" htmlFor="password">
@@ -17,10 +19,11 @@ export const LoginForm: React.FC = () => {
           </Text>
           <TextField.Root type="password" placeholder="Enter your password" id="password" name="password" />
         </Box>
-        <Button mt="4" color="amber" style={{ width: '100%' }} type="submit">
+        {fetcher.data ? <Text mb="-6" mt="-2" color="red">{fetcher.data}</Text> : null}
+        <Button mt="4" color="amber" style={{ width: '100%' }} type="submit" disabled={fetcher.state !== 'idle'}>
           <Text weight="bold">Login</Text>
         </Button>
-      </Form>
+      </fetcher.Form>
     </Flex>
   )
 }

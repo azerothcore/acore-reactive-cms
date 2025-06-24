@@ -1,8 +1,7 @@
-// app/services/session.server.ts
-
+import type { AuthenticateResponse } from '../auth/authenticate'
 import { createCookieSessionStorage, redirect } from 'react-router'
 
-export interface User { id: string, name: string, email: string }
+const USER_SESSION_KEY = 'user'
 
 export const sessionStorage = createCookieSessionStorage({
   cookie: {
@@ -30,31 +29,43 @@ export async function logout(request: Request) {
   })
 }
 
-const USER_SESSION_KEY = 'userId'
-
 export async function getUser(
   request: Request,
-): Promise<User | undefined> {
+): Promise<AuthenticateResponse['login']['user'] | undefined> {
   const session = await getUserSession(request)
-  const userId = session.get(USER_SESSION_KEY)
-  if (!userId)
+  const user = session.get(USER_SESSION_KEY)
+  if (!user)
     return undefined
-  return { id: userId, name: userId, email: userId }
+  return { id: user.id, email: user.email, username: user.username, nickname: user.nickname }
+}
+export async function getTokens(
+  request: Request,
+): Promise<Omit<AuthenticateResponse['login'], 'user'> | undefined> {
+  const session = await getUserSession(request)
+  const sessionData = session.get(USER_SESSION_KEY)
+  if (!sessionData)
+    return undefined
+  return {
+    authToken: sessionData.authToken,
+    authTokenExpiration: sessionData.authTokenExpiration,
+    refreshToken: sessionData.refreshToken,
+    refreshTokenExpiration: sessionData.refreshTokenExpiration,
+  }
 }
 
 export async function createUserSession({
   request,
-  userId,
+  user,
   remember = true,
   redirectUrl,
 }: {
   request: Request
-  userId: string
+  user: AuthenticateResponse['login']
   remember: boolean
   redirectUrl?: string
 }) {
   const session = await getUserSession(request)
-  session.set(USER_SESSION_KEY, userId)
+  session.set(USER_SESSION_KEY, user)
   return redirect(redirectUrl || '/', {
     headers: {
       'Set-Cookie': await sessionStorage.commitSession(session, {
