@@ -14,15 +14,15 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "preview": "pnpm run build && react-router-serve build/server/index.js",
-    "typecheck": "react-router typegen && tsc"
+    "typecheck": "react-router typegen && tsc",
+    "reactive-yalc": "git@github.com:Drassil/reactive-yalc.git"
   },
   "peerDependencies": {
     "@radix-ui/themes": "^3.2.1",
     "isbot": "^5.1.28",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-router": "^7.6.0",
-    "reactive-yalc": "git@github.com:Drassil/reactive-yalc.git"
+    "react-router": "^7.6.0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.13.2",
