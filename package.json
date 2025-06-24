@@ -15,7 +15,7 @@
     "lint:fix": "eslint . --fix",
     "preview": "pnpm run build && react-router-serve build/server/index.js",
     "typecheck": "react-router typegen && tsc",
-    "reactive-yalc": "git@github.com:Drassil/reactive-yalc.git"
+    "@drassil/reactive-yalc": "git@github.com:Drassil/reactive-yalc.git"
   },
   "peerDependencies": {
     "@radix-ui/themes": "^3.2.1",
