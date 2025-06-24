@@ -1,5 +1,3 @@
-// app/services/session.server.ts
-
 import { createCookieSessionStorage, redirect } from 'react-router'
 
 export interface User { id: string, name: string, email: string }
@@ -30,7 +28,7 @@ export async function logout(request: Request) {
   })
 }
 
-const USER_SESSION_KEY = 'userId'
+const USER_SESSION_KEY = 'user'
 
 export async function getUser(
   request: Request,

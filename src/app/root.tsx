@@ -1,5 +1,6 @@
 import type { LinksFunction } from 'react-router'
 import type { Route } from './+types/root'
+import { ApolloHydrationHelper } from '@apollo/client-integration-react-router'
 import { Theme } from '@radix-ui/themes'
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router'
 import { UserProvider } from '@/contexts/auth/UserProvider'
@@ -31,7 +32,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        {children}
+        <ApolloHydrationHelper>
+          {children}
+        </ApolloHydrationHelper>
         <ScrollRestoration />
         <Scripts />
       </body>

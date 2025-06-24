@@ -6,10 +6,10 @@ export const LoginForm: React.FC = () => {
     <Flex asChild direction="column" gap="4">
       <Form method="post">
         <Box>
-          <Text as="label" htmlFor="email">
-            Email
+          <Text as="label" htmlFor="username">
+            Username
           </Text>
-          <TextField.Root placeholder="Enter your email" id="email" name="email" />
+          <TextField.Root placeholder="Enter your username" id="username" name="username" />
         </Box>
         <Box>
           <Text as="label" htmlFor="password">

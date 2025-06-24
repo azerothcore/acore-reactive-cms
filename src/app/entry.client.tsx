@@ -4,15 +4,21 @@
  * For more information, see https://remix.run/file-conventions/entry.client
  */
 
+import { ApolloProvider } from '@apollo/client/index.js'
 import { startTransition, StrictMode } from 'react'
 import { hydrateRoot } from 'react-dom/client'
 import { HydratedRouter } from 'react-router/dom'
+import { makeClient } from '@/lib/gql/apollo'
 
-startTransition(() => {
+startTransition(async () => {
+  const client = makeClient()
+
   hydrateRoot(
     document,
     <StrictMode>
-      <HydratedRouter />
+      <ApolloProvider client={client}>
+        <HydratedRouter />
+      </ApolloProvider>
     </StrictMode>,
   )
 })
