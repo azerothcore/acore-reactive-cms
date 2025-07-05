@@ -5,6 +5,7 @@ import { Nav } from '@/components/Nav'
 const navLinks: NavLinkItem[] = [
   { href: '/', label: 'Home' },
   { href: '/contacts', label: 'Contacts' },
+  { href: '/posts', label: 'Posts' },
 ]
 
 const WithNavLayout: React.FC = () => {

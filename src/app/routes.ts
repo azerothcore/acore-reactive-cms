@@ -16,5 +16,7 @@ export default [
   ]),
   layout(path.resolve(__dirname, '../layouts/with-nav.tsx'), [
     index(path.resolve(__dirname, './routes/home.tsx')),
+    route('/posts', path.resolve(__dirname, './routes/posts.tsx')),
+    route('/posts/:slug', path.resolve(__dirname, './routes/post.tsx')),
   ]),
 ] satisfies RouteConfig
