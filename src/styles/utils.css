@@ -1,0 +1,6 @@
+.vertically-centered {
+  position: relative;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+}

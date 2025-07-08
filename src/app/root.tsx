@@ -7,6 +7,7 @@ import { UserProvider } from '@/contexts/auth/UserProvider'
 import { getUser } from '@/lib/session/session.server'
 import '@/styles/reset.css'
 import '@/styles/gradients.css'
+import '@/styles/utils.css'
 import '@radix-ui/themes/styles.css'
 
 export const links: LinksFunction = () => [

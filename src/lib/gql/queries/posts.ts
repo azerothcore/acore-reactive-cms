@@ -5,11 +5,17 @@ const GET_POSTS = gql`
   query GetPosts {
     posts {
       nodes {
-        id,
-        content,
-        title,
-        slug,
+        id
+        content
+        title
+        slug
         date
+        featuredImage {
+          node {
+            altText
+            mediaType
+          }
+        }
       }
     }
   }
@@ -21,6 +27,7 @@ export interface Post {
   content: string
   slug: string
   date: string
+  featuredImage: null
 }
 
 export async function getPosts(request?: Request) {
@@ -38,6 +45,12 @@ const GET_POST_BY_SLUG = gql`
     title
     slug
     date
+    featuredImage {
+      node {
+        altText
+        mediaType
+      }
+    }
   }
 }
 `
