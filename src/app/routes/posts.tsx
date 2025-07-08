@@ -8,6 +8,10 @@ export async function loader() {
 
 export default function Posts({ loaderData }: Route.ComponentProps) {
   return (
-    <PostList posts={loaderData.data.posts.nodes || []} />
+    <>
+      <title>Azeroth Core - Posts</title>
+      <meta name="description" content="Discover the latest posts from Azeroth Core" />
+      <PostList posts={loaderData.data.posts.nodes || []} />
+    </>
   )
 }

@@ -15,7 +15,7 @@ function PostList(props: Props) {
   return (
     <Section title="Posts">
       {posts.map(post => (
-        <Card key={post.id} asChild>
+        <Card key={post.id} asChild mt="6" mb="6">
           <article>
             <Link href={`/posts/${post.slug}`} style={{ color: 'var(--color-gray11)' }}>
               <Heading as="h2">{post.title}</Heading>

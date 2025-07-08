@@ -10,7 +10,7 @@ export async function loader({ params }: Route.LoaderArgs) {
 export default function PostPage({ loaderData }: Route.ComponentProps) {
   return (
     <>
-      <title>{loaderData.data.post.title}</title>
+      <title>{`${loaderData.data.post.title} - Azeroth Core`}</title>
       <Post post={loaderData.data.post} />
     </>
   )
