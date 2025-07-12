@@ -7,7 +7,7 @@ import { createReadableStreamFromReadable } from '@react-router/node'
 import { isbot } from 'isbot'
 import { renderToPipeableStream } from 'react-dom/server'
 import { ServerRouter } from 'react-router'
-import { makeClient } from '@/lib/gql/apollo'
+import { makeClient } from '@/lib/gql/apollo.server'
 
 export const streamTimeout = 5_000
 
@@ -17,11 +17,10 @@ export default async function handleRequest(
   responseHeaders: Headers,
   routerContext: EntryContext,
 ) {
+  const client = await makeClient(request)
   return new Promise((resolve, reject) => {
     let shellRendered = false
     const userAgent = request.headers.get('user-agent')
-
-    const client = makeClient(request)
 
     // Ensure requests from bots and SPA Mode renders wait for all content to load before responding
     // https://react.dev/reference/react-dom/server/renderToPipeableStream#waiting-for-all-content-to-load-for-crawlers-and-static-generation

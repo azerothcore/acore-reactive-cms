@@ -1,5 +1,5 @@
 import { gql } from '@apollo/client/index.js'
-import { makeClient } from '../gql/apollo'
+import { makeClient } from '../gql/apollo.server'
 
 interface AuthenticateVariables {
   username: string
@@ -48,7 +48,7 @@ mutation loginWithPassword(
     }
   }
 }`
-  const client = makeClient()
+  const client = await makeClient()
 
   return client.mutate<AuthenticateResponse>({
     mutation: query,

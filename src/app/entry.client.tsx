@@ -8,10 +8,10 @@ import { ApolloProvider } from '@apollo/client/index.js'
 import { startTransition, StrictMode } from 'react'
 import { hydrateRoot } from 'react-dom/client'
 import { HydratedRouter } from 'react-router/dom'
-import { makeClient } from '@/lib/gql/apollo'
+import { makeClient } from '@/lib/gql/apollo.client'
 
 startTransition(async () => {
-  const client = makeClient()
+  const client = await makeClient()
 
   hydrateRoot(
     document,

@@ -1,14 +1,15 @@
 import type { Route } from './+types/page'
-import { redirect } from 'react-router'
+import { replace } from 'react-router'
 import { getPageByUri } from '@/lib/gql/queries/pages'
+import { isRestrictedContent } from '@/lib/gql/utils'
 import Post from '@/pages/Post'
 
-export async function loader({ params }: Route.LoaderArgs) {
+export async function loader({ params, request }: Route.LoaderArgs) {
   const { uri } = params
 
-  const response = await getPageByUri(uri)
-  if (!response.data.page) {
-    throw redirect('/404')
+  const response = await getPageByUri(uri, request)
+  if (!response.data.page || isRestrictedContent(response.data.page.content)) {
+    throw replace('/404')
   }
   return response
 }

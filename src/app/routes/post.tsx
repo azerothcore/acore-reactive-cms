@@ -1,13 +1,14 @@
 import type { Route } from './+types/post'
-import { redirect } from 'react-router'
+import { replace } from 'react-router'
 import { getPostBySlug } from '@/lib/gql/queries/posts'
+import { isRestrictedContent } from '@/lib/gql/utils'
 import Post from '@/pages/Post'
 
-export async function loader({ params }: Route.LoaderArgs) {
+export async function loader({ params, request }: Route.LoaderArgs) {
   const { slug } = params
-  const response = await getPostBySlug(slug)
-  if (!response.data.post) {
-    throw redirect('/404')
+  const response = await getPostBySlug(slug, request)
+  if (!response.data.post || isRestrictedContent(response.data.post.content)) {
+    throw replace('/404')
   }
   return response
 }
