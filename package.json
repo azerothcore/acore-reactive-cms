@@ -4,6 +4,10 @@
   "private": true,
   "packageManager": "pnpm@10.11.0",
   "sideEffects": false,
+  "exports": {
+    "./": "./src/",
+    "./vite.config.js": "./vite.config.js"
+  },
   "engines": {
     "node": ">=22.0.0",
     "pnpm": ">=10.0.0"
