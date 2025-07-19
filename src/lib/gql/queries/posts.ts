@@ -13,7 +13,7 @@ const GET_POSTS = gql`
         featuredImage {
           node {
             altText
-            mediaType
+            sourceUrl
           }
         }
       }
@@ -27,7 +27,7 @@ export interface Post {
   content: string
   slug: string
   date: string
-  featuredImage: null
+  featuredImage: { node: { altText: string, sourceUrl: string } } | null
 }
 
 export async function getPosts(request: Request) {
@@ -48,7 +48,7 @@ const GET_POST_BY_SLUG = gql`
     featuredImage {
       node {
         altText
-        mediaType
+        sourceUrl
       }
     }
   }

@@ -13,7 +13,7 @@ query GetPageByUri($uri: ID!) {
     featuredImage {
       node {
         altText
-        mediaType
+        sourceUrl
       }
     }
   }
