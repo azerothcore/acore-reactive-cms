@@ -1,21 +1,16 @@
-import { useEffect } from 'react'
-import { Outlet, useNavigate } from 'react-router'
-import { useUser } from '@/contexts/auth/useUser'
+import type { Route } from '../app/+types/root'
+import { Outlet, redirect } from 'react-router'
+import { userContext } from '@/contexts/UserContext'
+
+export function loader({ context }: Route.LoaderArgs) {
+  const user = context.get(userContext)
+  if (!user) {
+    return redirect('/login')
+  }
+  return null
+}
 
 const WithAuthLayout: React.FC = () => {
-  const navigate = useNavigate()
-  const user = useUser()
-
-  useEffect(() => {
-    if (!user) {
-      navigate('/login', { replace: true })
-    }
-  }, [user, navigate])
-
-  if (!user) {
-    return null
-  }
-
   return (
     <Outlet />
   )

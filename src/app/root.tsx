@@ -1,10 +1,8 @@
 import type { LinksFunction } from 'react-router'
-import type { Route } from './+types/root'
 import { ApolloHydrationHelper } from '@apollo/client-integration-react-router'
 import { Theme } from '@radix-ui/themes'
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router'
-import { UserProvider } from '@/contexts/auth/UserProvider'
-import { getUser } from '@/lib/session/session.server'
+import { sessionMiddleware } from '@/middleware/session'
 import '@/styles/reset.css'
 import '@/styles/gradients.css'
 import '@/styles/utils.css'
@@ -43,16 +41,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
   )
 }
 
-export async function loader({ request }: Route.LoaderArgs) {
-  return await getUser(request)
-}
+export const unstable_middleware = [sessionMiddleware]
 
-export default function Root({ loaderData }: Route.ComponentProps) {
+export default function Root() {
   return (
     <Theme appearance="dark" className="app-bg--gradient">
-      <UserProvider user={loaderData}>
-        <Outlet />
-      </UserProvider>
+      <Outlet />
     </Theme>
   )
 }

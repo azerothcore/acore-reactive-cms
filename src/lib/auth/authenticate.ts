@@ -55,3 +55,35 @@ mutation loginWithPassword(
     variables,
   })
 }
+
+interface RefreshVariables {
+  token: string
+}
+
+interface RefreshResponse {
+  refreshToken: {
+    authToken: string
+    authTokenExpiration: string
+    success: boolean
+  }
+}
+
+export async function refresh(variables: RefreshVariables) {
+  const query = gql`
+    mutation refreshToken(
+      $token: String!
+    ) {
+      refreshToken(input: {refreshToken: $token}) {
+        authToken
+        authTokenExpiration
+        success
+      }
+    }`
+
+  const client = await makeClient()
+
+  return client.mutate<RefreshResponse>({
+    mutation: query,
+    variables,
+  })
+}

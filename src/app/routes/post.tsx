@@ -6,6 +6,7 @@ import Post from '@/pages/Post'
 
 export async function loader({ params, request }: Route.LoaderArgs) {
   const { slug } = params
+
   const response = await getPostBySlug(slug, request)
   if (!response.data.post || isRestrictedContent(response.data.post.content)) {
     throw replace('/404')

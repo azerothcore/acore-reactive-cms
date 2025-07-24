@@ -1,7 +1,7 @@
 import type { ActionFunctionArgs } from 'react-router'
-import { useEffect } from 'react'
-import { useNavigate } from 'react-router'
-import { useUser } from '@/contexts/auth/useUser'
+import type { Route } from './+types/login'
+import { redirect } from 'react-router'
+import { userContext } from '@/contexts/UserContext'
 import { authenticate } from '@/lib/auth/authenticate'
 import { createUserSession } from '@/lib/session/session.server'
 import LoginPage from '@/pages/Login'
@@ -17,14 +17,18 @@ export async function action({
   try {
     const result = await authenticate({ username, password })
     if (result.data) {
-      response = await createUserSession({
+      const sessionHeaders = await createUserSession({
         request,
         user: result.data.login,
         remember: true,
       })
-      if (!response) {
+      if (!sessionHeaders) {
         throw new Error('An error occurred while creating the session')
       }
+
+      response = redirect('/', {
+        headers: sessionHeaders,
+      })
     }
     else {
       throw new Error('Authentication failed: No data returned')
@@ -40,20 +44,17 @@ export async function action({
   return response
 }
 
-export default function Login() {
-  const user = useUser()
-
-  const navigate = useNavigate()
-
-  useEffect(() => {
-    if (user) {
-      navigate('/', { replace: true })
-    }
-  }, [user, navigate])
-
+export async function loader({
+  context,
+}: Route.LoaderArgs) {
+  const user = context.get(userContext)
   if (user) {
-    return null
+    return redirect('/')
   }
+  return null
+}
+
+export default function Login() {
   return (
     <>
       <title>Azeroth Core - Login</title>

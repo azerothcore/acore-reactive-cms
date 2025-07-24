@@ -1,7 +1,7 @@
+import type { User } from '@/contexts/UserContext'
 import { Box, Button, Container, Flex, Text } from '@radix-ui/themes'
 import azerothCoreLogo from '@/assets/azeroth-core-logo.png'
 import { Link } from '@/components/Link'
-import { useUser } from '@/contexts/auth/useUser'
 import { LogoutButton } from './LogoutButton'
 
 export interface NavLinkItem {
@@ -11,10 +11,10 @@ export interface NavLinkItem {
 
 export interface NavProps {
   links: NavLinkItem[]
+  user: User | null
 }
 
-export const Nav: React.FC<NavProps> = ({ links }) => {
-  const user = useUser()
+export const Nav: React.FC<NavProps> = ({ links, user }) => {
   return (
     <Box asChild pb="2" pl="4" pr="4" pt="2" width="100%" position="absolute" style={{ background: 'var(--color-overlay)', top: 0, left: 0, zIndex: 1 }}>
       <nav>
